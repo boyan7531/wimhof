@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e3c72;
+    --secondary-color: #2a5298;
+    --accent-color: #4CAF50;
+    --text-color: #ffffff;
+    --container-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    padding: 1rem;
+}
+
+.container {
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--container-bg);
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    width: 100%;
+    margin: 1rem;
+}
+
+h1 {
+    margin-bottom: 2rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--text-color);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}
+
+.breathing-container {
+    margin: 2rem 0;
+}
+
+.breathing-circle {
+    width: clamp(180px, 40vw, 250px);
+    height: clamp(180px, 40vw, 250px);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 2rem auto;
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.breathing-circle.inhale {
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.breathing-circle.exhale {
+    transform: scale(0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.instruction {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin: 1.5rem 0;
+    min-height: 2rem;
+    font-weight: 500;
+}
+
+.btn {
+    padding: 0.8rem 1.8rem;
+    margin: 0.5rem;
+    border: none;
+    border-radius: 25px;
+    background: var(--text-color);
+    color: var(--primary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: #f8f9fa;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.timer-display {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+.round-info {
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+.round-info h2 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: 0.5rem;
+}
+
+.breath-count {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-top: 0.5rem;
+    opacity: 0.9;
+}
+
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 2rem;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, 
+        rgba(255,255,255,.15) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255,255,255,.15) 50%, 
+        rgba(255,255,255,.15) 75%, 
+        transparent 75%, 
+        transparent);
+    background-size: 1rem 1rem;
+    animation: progress-animation 1s linear infinite;
+}
+
+@keyframes progress-animation {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(255, 255, 255, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 255, 255, 0.1); }
+}
+
+.breathing-circle.active {
+    animation: pulse 4s infinite;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        margin: 0.5rem;
+        border-radius: 20px;
+    }
+
+    .btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+
+    .breathing-circle {
+        margin: 1.5rem auto;
+    }
+
+    .round-info {
+        padding: 0.8rem;
+        width: 90%;
+    }
+} 

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wim Hof Breathing Method</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Wim Hof Breathing Method</h1>
+        <div class="breathing-container">
+            <div class="round-info">
+                <h2>Round <span id="current-round">1</span>/3</h2>
+                <p class="breath-count">Breath: <span id="breath-counter">0</span>/30</p>
+            </div>
+            <div class="timer-display">
+                <p id="timer">Get Ready</p>
+            </div>
+            <div class="breathing-circle"></div>
+            <div class="instruction" id="instruction">Press Start when ready</div>
+        </div>
+        <div class="controls">
+            <button id="startBtn" class="btn">Start</button>
+            <button id="pauseBtn" class="btn" disabled>Pause</button>
+            <button id="resetBtn" class="btn" disabled>Reset</button>
+        </div>
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
